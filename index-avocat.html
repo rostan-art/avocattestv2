@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Durand & Associés — Cabinet d'Avocats Paris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --bg2: #EFEDE7;
+      --bg3: #E8E4DC;
+      --dark: #1A1814;
+      --dark2: #2E2B26;
+      --navy: #1B2A4A;
+      --navy2: #253860;
+      --navy-dim: #4A5F80;
+      --gold: #8C6D3F;
+      --gold2: #B08B52;
+      --text: #2A2720;
+      --text-dim: #6B6456;
+      --border: #D9D4C7;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Outfit', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(247, 245, 240, 0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+    .nav-logo-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--navy);
+      color: #F7F5F0;
+      padding: 0.6rem 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--navy2); }
+
+    /* HERO */
+    #accueil {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+    .hero-left {
+      background: var(--navy);
+      padding: 7rem 5% 5rem 7%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      bottom: -4rem; right: -4rem;
+      width: 20rem;
+      height: 20rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 50%;
+    }
+    .hero-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+      line-height: 1.1;
+      color: #F0EDE6;
+      margin-bottom: 1.8rem;
+      letter-spacing: -0.01em;
+    }
+    h1 em { font-style: italic; color: var(--gold2); }
+    .hero-sub {
+      color: rgba(240, 237, 230, 0.6);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      max-width: 400px;
+      margin-bottom: 3rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold2);
+      color: var(--dark);
+      padding: 0.85rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover { background: #C4A06A; }
+    .btn-outline {
+      border: 1px solid rgba(240,237,230,0.25);
+      color: rgba(240,237,230,0.7);
+      padding: 0.85rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .btn-outline:hover { border-color: rgba(240,237,230,0.6); color: #F0EDE6; }
+    .hero-right {
+      background: var(--bg2);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      height: 65%;
+      background: var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+    .hero-card {
+      background: white;
+      border-top: 3px solid var(--gold2);
+      padding: 2rem 2.5rem;
+      margin: 0;
+    }
+    .hero-card-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .hero-stats-row { display: flex; gap: 2rem; }
+    .hstat { text-align: center; }
+    .hstat-n {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      color: var(--navy);
+      display: block;
+      line-height: 1;
+    }
+    .hstat-l { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-dim); text-transform: uppercase; margin-top: 0.3rem; }
+
+    /* SECTIONS */
+    section { padding: 6rem 7%; }
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    h2 em { font-style: italic; }
+    .divider {
+      width: 3rem;
+      height: 2px;
+      background: var(--gold2);
+      margin: 1.2rem 0 2.5rem;
+    }
+
+    /* DOMAINES */
+    #domaines { background: var(--bg); }
+    .domaines-header { max-width: 600px; margin-bottom: 3.5rem; }
+    .domaines-header p { color: var(--text-dim); }
+    .domaines-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .domaine-card {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+      cursor: default;
+    }
+    .domaine-card:hover {
+      border-color: var(--gold2);
+      transform: translateY(-3px);
+    }
+    .domaine-icon {
+      width: 3rem;
+      height: 3rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--navy);
+    }
+    .domaine-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+    }
+    .domaine-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.8; }
+
+    /* EQUIPE */
+    #equipe { background: var(--navy); }
+    #equipe .section-tag { color: var(--gold2); }
+    #equipe h2 { color: #F0EDE6; }
+    .equipe-sub { color: rgba(240,237,230,0.6); max-width: 500px; margin-bottom: 3.5rem; font-size: 0.95rem; }
+    .equipe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .avocat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .avocat-card:hover { background: rgba(255,255,255,0.07); }
+    .avocat-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(240,237,230,0.3);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.85rem;
+    }
+    .avocat-info { padding: 1.5rem; }
+    .avocat-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: #F0EDE6;
+      margin-bottom: 0.3rem;
+    }
+    .avocat-role {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold2);
+      margin-bottom: 1rem;
+    }
+    .avocat-desc { font-size: 0.85rem; color: rgba(240,237,230,0.5); line-height: 1.8; }
+
+    /* TEMOIGNAGES */
+    #temoignages { background: var(--bg2); }
+    .temoignages-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .temoignage {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+    .temoignage-stars { color: var(--gold2); font-size: 0.8rem; letter-spacing: 0.15em; margin-bottom: 1.5rem; }
+    .temoignage-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .temoignage-author { display: flex; align-items: center; gap: 1rem; border-top: 1px solid var(--border); padding-top: 1.2rem; }
+    .author-avatar {
+      width: 2.8rem;
+      height: 2.8rem;
+      background: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: #F0EDE6;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.85rem; font-weight: 500; color: var(--text); }
+    .author-role { font-size: 0.75rem; color: var(--text-dim); }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-left p { color: var(--text-dim); margin-bottom: 2.5rem; font-size: 0.95rem; }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 2.4rem;
+      height: 2.4rem;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold2);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.2rem; }
+    .contact-val { font-size: 0.9rem; color: var(--text); }
+    .form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+    .form-input, .form-select, .form-textarea {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.8rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--navy); }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); opacity: 0.5; }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      background: var(--navy);
+      color: #F0EDE6;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.3s;
+    }
+    .form-submit:hover { background: var(--navy2); }
+    .form-mention { font-size: 0.72rem; color: var(--text-dim); margin-top: 0.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: rgba(240,237,230,0.5);
+      padding: 3rem 7%;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .footer-logo-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: #F0EDE6;
+      margin-bottom: 0.3rem;
+    }
+    .footer-logo-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold2);
+    }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a { font-size: 0.8rem; color: rgba(240,237,230,0.4); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: #F0EDE6; }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; }
+    .footer-bar { display: flex; gap: 1rem; align-items: center; }
+    .bar-sep { opacity: 0.2; }
+
+    /* ANIM */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      #accueil { grid-template-columns: 1fr; }
+      .hero-right { min-height: 300px; }
+      .domaines-grid, .equipe-grid { grid-template-columns: 1fr; }
+      .temoignages-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#accueil" class="nav-logo">
+      <span class="nav-logo-name">Durand & Associés</span>
+      <span class="nav-logo-sub">Cabinet d'Avocats — Paris</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#domaines">Domaines</a></li>
+      <li><a href="#equipe">L'équipe</a></li>
+      <li><a href="#temoignages">Avis clients</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Consultation</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="accueil">
+    <div class="hero-left">
+      <span class="hero-tag">Cabinet fondé en 2004 — Paris 8ème</span>
+      <h1>Votre droit,<br>défendu avec<br><em>rigueur.</em></h1>
+      <p class="hero-sub">Durand & Associés conseille et défend particuliers, entreprises et dirigeants dans leurs enjeux juridiques les plus complexes, avec une approche humaine et sur-mesure.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+        <a href="#domaines" class="btn-outline">Nos domaines</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img">Photo du cabinet</div>
+      <div class="hero-card">
+        <div class="hero-card-title">Le cabinet en chiffres</div>
+        <div class="hero-stats-row">
+          <div class="hstat">
+            <span class="hstat-n">+20</span>
+            <div class="hstat-l">Ans d'expérience</div>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">98%</span>
+            <div class="hstat-l">Clients satisfaits</div>
+          </div>
+          <div class="hstat">
+            <span class="hstat-n">+800</span>
+            <div class="hstat-l">Dossiers traités</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOMAINES -->
+  <section id="domaines">
+    <div class="domaines-header fade-in">
+      <span class="section-tag">Domaines d'intervention</span>
+      <h2>Une expertise pointue<br>dans <em>six domaines clés</em></h2>
+      <div class="divider"></div>
+      <p>Notre équipe de 6 avocats associés vous offre une couverture juridique complète, du conseil préventif à la représentation en contentieux.</p>
+    </div>
+    <div class="domaines-grid fade-in">
+      <div class="domaine-card">
+        <div class="domaine-icon">⚖</div>
+        <div class="domaine-title">Droit des affaires</div>
+        <p class="domaine-desc">Création de sociétés, contrats commerciaux, fusions-acquisitions, restructuration. Nous accompagnons vos opérations stratégiques.</p>
+      </div>
+      <div class="domaine-card">
+        <div class="domaine-icon">🏠</div>
+        <div class="domaine-title">Droit immobilier</div>
+        <p class="domaine-desc">Transactions, baux commerciaux, copropriété, contentieux locatifs. Une expertise reconnue pour sécuriser vos actifs.</p>
+      </div>
+      <div class="domaine-card">
+        <div class="domaine-icon">👥</div>
+        <div class="domaine-title">Droit social</div>
+        <p class="domaine-desc">Relations employeur-salarié, licenciements, négociation collective, conseil RH. Protégez votre entreprise et vos équipes.</p>
+      </div>
+      <div class="domaine-card">
+        <div class="domaine-icon">👪</div>
+        <div class="domaine-title">Droit de la famille</div>
+        <p class="domaine-desc">Divorce, garde d'enfants, successions, régimes matrimoniaux. Un accompagnement sensible dans les moments difficiles.</p>
+      </div>
+      <div class="domaine-card">
+        <div class="domaine-icon">🛡</div>
+        <div class="domaine-title">Droit pénal</div>
+        <p class="domaine-desc">Défense pénale des particuliers et des entreprises, droit pénal des affaires, fraude, corruption. Présents à chaque stade.</p>
+      </div>
+      <div class="domaine-card">
+        <div class="domaine-icon">💡</div>
+        <div class="domaine-title">Propriété intellectuelle</div>
+        <p class="domaine-desc">Marques, brevets, droits d'auteur, contrefaçon, protection de l'innovation. Défendez votre création.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉQUIPE -->
+  <section id="equipe">
+    <span class="section-tag fade-in">L'équipe</span>
+    <h2 class="fade-in">Des avocats <em>engagés</em><br>à vos côtés</h2>
+    <p class="equipe-sub fade-in">Six associés aux profils complémentaires, tous formés dans les meilleures facultés de droit françaises et à l'international.</p>
+    <div class="equipe-grid fade-in">
+      <div class="avocat-card">
+        <div class="avocat-photo">Photo</div>
+        <div class="avocat-info">
+          <div class="avocat-name">Maître Claire Durand</div>
+          <div class="avocat-role">Associée fondatrice — Droit des affaires</div>
+          <p class="avocat-desc">Ancienne avocate au barreau de New York, Claire Durand fonde le cabinet en 2004. Reconnue comme l'une des 100 juristes les plus influentes de France.</p>
+        </div>
+      </div>
+      <div class="avocat-card">
+        <div class="avocat-photo">Photo</div>
+        <div class="avocat-info">
+          <div class="avocat-name">Maître Julien Moreau</div>
+          <div class="avocat-role">Associé — Droit social & RH</div>
+          <p class="avocat-desc">Spécialiste des relations collectives de travail, Julien Moreau conseille des groupes du CAC 40 ainsi que des PME dans leurs transformations sociales.</p>
+        </div>
+      </div>
+      <div class="avocat-card">
+        <div class="avocat-photo">Photo</div>
+        <div class="avocat-info">
+          <div class="avocat-name">Maître Élise Fontaine</div>
+          <div class="avocat-role">Associée — Droit de la famille</div>
+          <p class="avocat-desc">Médiateur certifiée, Élise Fontaine favorise le règlement amiable des conflits familiaux tout en assurant une défense ferme de vos intérêts en justice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section id="temoignages">
+    <span class="section-tag fade-in">Avis clients</span>
+    <h2 class="fade-in">Ils nous ont <em>fait confiance</em></h2>
+    <div class="temoignages-grid fade-in">
+      <div class="temoignage">
+        <div class="temoignage-stars">★ ★ ★ ★ ★</div>
+        <p class="temoignage-text">Maître Durand a géré l'acquisition de notre siège social avec une efficacité et une clarté remarquables. Chaque étape était expliquée, chaque risque anticipé. Un cabinet hors pair.</p>
+        <div class="temoignage-author">
+          <div class="author-avatar">PL</div>
+          <div>
+            <div class="author-name">Philippe Lemaître</div>
+            <div class="author-role">Directeur Général — Groupe Lemaître & Fils</div>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage">
+        <div class="temoignage-stars">★ ★ ★ ★ ★</div>
+        <p class="temoignage-text">Dans un divorce complexe avec des enjeux patrimoniaux importants, Maître Fontaine a su protéger mes intérêts tout en préservant une relation apaisée avec mon ex-conjoint. Merci.</p>
+        <div class="temoignage-author">
+          <div class="author-avatar">SB</div>
+          <div>
+            <div class="author-name">Sophie B.</div>
+            <div class="author-role">Cliente particulière</div>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage">
+        <div class="temoignage-stars">★ ★ ★ ★ ★</div>
+        <p class="temoignage-text">Nous faisons appel à Durand & Associés depuis 6 ans pour tous nos enjeux RH. Leur réactivité et leur expertise du droit social nous ont évité plusieurs contentieux coûteux.</p>
+        <div class="temoignage-author">
+          <div class="author-avatar">MC</div>
+          <div>
+            <div class="author-name">Marie Chereau</div>
+            <div class="author-role">DRH — Groupe Chereau Logistique (850 salariés)</div>
+          </div>
+        </div>
+      </div>
+      <div class="temoignage">
+        <div class="temoignage-stars">★ ★ ★ ★ ★</div>
+        <p class="temoignage-text">Confronté à une accusation injuste, j'avais besoin d'un avocat pénaliste solide. L'équipe du cabinet a été d'un professionnalisme absolu, et l'affaire s'est conclue par un non-lieu.</p>
+        <div class="temoignage-author">
+          <div class="author-avatar">AR</div>
+          <div>
+            <div class="author-name">Antoine R.</div>
+            <div class="author-role">Client particulier</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid fade-in">
+      <div class="contact-left">
+        <span class="section-tag">Contact</span>
+        <h2>Parlons de<br><em>votre situation</em></h2>
+        <div class="divider"></div>
+        <p>La première consultation (30 min) est offerte. Elle nous permet d'analyser votre situation, d'évaluer les options disponibles et de vous proposer la stratégie la plus adaptée.</p>
+        <div class="contact-item">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val">contact@durand-avocats.fr</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">☎</div>
+          <div>
+            <div class="contact-label">Téléphone</div>
+            <div class="contact-val">01 45 61 22 80</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">◎</div>
+          <div>
+            <div class="contact-label">Adresse</div>
+            <div class="contact-val">28 avenue des Champs-Élysées, 75008 Paris</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">◷</div>
+          <div>
+            <div class="contact-label">Horaires</div>
+            <div class="contact-val">Lun–Ven 8h30–19h — Urgences 24h/24</div>
+          </div>
+        </div>
+      </div>
+      <form class="form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Prénom</label>
+            <input type="text" class="form-input" placeholder="Jean">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nom</label>
+            <input type="text" class="form-input" placeholder="Dupont">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="jean.dupont@email.fr">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Téléphone</label>
+          <input type="tel" class="form-input" placeholder="+33 6 00 00 00 00">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Domaine juridique concerné</label>
+          <select class="form-select">
+            <option value="" disabled selected>Sélectionnez un domaine</option>
+            <option>Droit des affaires</option>
+            <option>Droit immobilier</option>
+            <option>Droit social</option>
+            <option>Droit de la famille</option>
+            <option>Droit pénal</option>
+            <option>Propriété intellectuelle</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Décrivez brièvement votre situation</label>
+          <textarea class="form-textarea" placeholder="Plus vous serez précis, mieux nous pourrons préparer votre consultation..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Demander une consultation →</button>
+        <p class="form-mention">Vos données sont traitées de façon confidentielle, conformément au secret professionnel de l'avocat et au RGPD.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo-name">Durand & Associés</div>
+        <div class="footer-logo-sub">Cabinet d'Avocats — Barreau de Paris</div>
+      </div>
+      <div class="footer-links">
+        <a href="#domaines">Domaines</a>
+        <a href="#equipe">L'équipe</a>
+        <a href="#temoignages">Avis clients</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Durand & Associés. Tous droits réservés.</span>
+      <div class="footer-bar">
+        <a href="#" style="color: rgba(240,237,230,0.35); font-size:0.75rem; text-decoration:none;">Mentions légales</a>
+        <span class="bar-sep">|</span>
+        <a href="#" style="color: rgba(240,237,230,0.35); font-size:0.75rem; text-decoration:none;">Politique de confidentialité</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = 'Demande envoyée ✓';
+      btn.style.background = '#2D5A3D';
+      setTimeout(() => {
+        btn.textContent = 'Demander une consultation →';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
